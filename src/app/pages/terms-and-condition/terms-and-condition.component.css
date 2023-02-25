@@ -1,0 +1,7 @@
+.text_format_{
+  font-weight: 500;
+}
+
+.btn-add{
+  background-color: var(--primary-color);
+}

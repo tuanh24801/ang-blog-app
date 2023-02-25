@@ -18,3 +18,7 @@
   margin-right: 30px;
 }
 
+.btn-add{
+  background-color: var(--primary-color);
+}
+
