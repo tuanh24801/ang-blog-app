@@ -31,4 +31,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Source course : https://www.youtube.com/watch?v=6zv1PTuqIIc
 # 1 : 2:07:18 / 11:14:51 (commit : 1)
 
+# 2 : 3:03:35 / 11:14:51 (...)
 
