@@ -1,6 +1,6 @@
 <div class="bg-theme p-5">
   <div class="container">
-    <h1 class="text-white">General Knowledge</h1>
+    <h1 class="text-white">{{ categoryName }}</h1>
     <p class="text-white">
       Lorem ipsum, dolor sit amet consectetur adipisicing elit. A, tempora quas at
       soluta eius sint fugiat pariatur! Praesentium doloremque nobis, maxime
@@ -11,23 +11,8 @@
 
 <div class="container mt-5 mb-5">
     <div class="row">
-      <div class="col-md-4 mb-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-md-4 mb-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-md-4 mb-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-md-4 mb-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-md-4 mb-3">
-        <app-post-card></app-post-card>
-      </div>
-      <div class="col-md-4 mb-3">
-        <app-post-card></app-post-card>
+      <div class="col-md-4 mb-3" *ngFor="let singlePost of singlePosts">
+        <app-post-card [postDataFeatured]="singlePost"></app-post-card>
       </div>
     </div>
 </div>

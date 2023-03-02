@@ -33,3 +33,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 # 2 : 3:03:35 / 11:14:51 (...)
 
+# 3 : 10:02:43 / 11:14:51 (Connected BE vs FE) 
+
