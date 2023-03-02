@@ -1,12 +1,15 @@
 .card{
   background-color: var(--secondary-color);
-  width: 1200px;
-  margin: auto;
+
 }
 
-.subs-text{
-  width: 500px;
+.message-sub{
+  margin:auto;
 }
+
+/* .subs-text{
+  width: 500px;
+} */
 
 /* .input-sub-ml{
   margin-left: 10px;

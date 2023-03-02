@@ -24,7 +24,9 @@ export class SinglePostComponent implements OnInit {
         }
       )
     });
+    this.post.countView(this.postId);
   }
+
   loadSimilarPost(id:string){
     return this.post.loadSimilar(id);
   }

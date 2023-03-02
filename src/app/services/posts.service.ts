@@ -1,18 +1,20 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collectionData, collection, query, where,limit,orderBy } from '@angular/fire/firestore';
+import { Firestore, collectionData, collection, query, where,limit ,orderBy, getDocs, doc,updateDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
+import { increment } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostsService {
+  viewCurrent: any;
 
-  constructor(private firestore: Firestore) { }
+  constructor(private firestore: Firestore ) { }
   loadPostFeatured(){
     const collectionInstance = collection(this.firestore, 'Post');
     collectionData(collectionInstance, {idField :'id'});
-    let q = query(collectionInstance);
-    q = query(collectionInstance, where('isFeatured', '==', true), limit(4))
+    // let q = query(collectionInstance);
+    let q = query(collectionInstance, where('isFeatured', '==', true), limit(4))
     return collectionData(q) as unknown as Observable<[]>;
 
     // return  collectionData(collectionInstance, {idField :'id'});
@@ -22,7 +24,7 @@ export class PostsService {
     const collectionInstance = collection(this.firestore, 'Post');
     collectionData(collectionInstance, {idField :'id'});
     let q = query(collectionInstance);
-    q = query(collectionInstance, where('isFeatured', '==', true))
+    // let q = query(collectionInstance, where('isFeatured', '==', true))
     return collectionData(q) as unknown as Observable<[]>;
 
     // return  collectionData(collectionInstance, {idField :'id'});
@@ -59,5 +61,33 @@ export class PostsService {
     return collectionData(q) as unknown as Observable<[]>;
   }
 
+
+
+  async countView(id: string) {
+    const playersRef = collection(this.firestore, 'Post');
+    let q = query(playersRef, where('id', '==', id));
+    const querySnapshot = await getDocs(q);
+    console.log(querySnapshot);
+    querySnapshot.forEach((document) => {
+      const docRef = doc(this.firestore, 'Post', document.id);
+      updateDoc(docRef,
+        {views: increment(1)}
+        ).then(() => {
+          console.log("view updated ");
+
+      });
+    });
+  }
+
+  // getViewCurrent(postId:any){
+  //   const playersRef = collection(this.firestore, 'Post');
+  //   let q = query(playersRef, where('id', '==', postId));
+  //   let a = collectionData(q) as unknown as Observable<[]>;
+  //   a.subscribe(val => {
+  //     let viewCurrent = Number({...val}[0]["views"]);
+  //     viewCurrent +=1;
+  //     this.countView(postId,viewCurrent);
+  //   })
+  // }
 
 }

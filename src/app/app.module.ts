@@ -17,7 +17,7 @@ import { CommentFormComponent } from './comments/comment-form/comment-form.compo
 import { CommentListComponent } from './comments/comment-list/comment-list.component';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { PostCardComponent } from './layouts/post-card/post-card.component';
-
+import { FormsModule } from '@angular/forms';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
@@ -63,8 +63,14 @@ const environment = {
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     AngularFireAuthModule,
-    ToastrModule.forRoot(),
-    BrowserAnimationsModule
+    ToastrModule.forRoot({
+      timeOut: 1500,
+      positionClass: 'toast-top-right'
+    }),
+    BrowserAnimationsModule,
+    FormsModule,
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

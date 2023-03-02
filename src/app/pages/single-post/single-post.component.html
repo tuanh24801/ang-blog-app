@@ -9,11 +9,11 @@
         />
         <div class="card-body" >
           <small class="bg-light text-danger text-center me-3"> {{ singlePost[0].title }}</small>
-          <small class="bg-light text-success text-center me-3">
+          <small class="bg-light text-success text-center me-3" *ngIf="singlePost[0].isFeatured">
             Featured
           </small>
           <small class="bg-light text-info text-center me-3">
-            View - {{ singlePost[0].view }}
+            View - {{ singlePost[0].views }}
           </small>
           <small class="bg-light text-warning text-center me-3">
             {{ singlePost[0].createdAt * 1000 | date: 'yyyy/MM/dd h:mm:ss a' }}

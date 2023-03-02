@@ -6,20 +6,67 @@
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus
         officiis dolore velit repudiandae architecto
       </p>
-      <form action="" class="form-inline mb-5 d-flex justify-content-space-between mt-5 form_">
-        <div class="form-group col-md-5 mr_">
-          <input type="text" class="form-control shadow-effect " placeholder="Your name">
-        </div>
+      <div class="row">
+        <form
+          #subForm="ngForm"
+          action=""
+          class="form-inline mb-5 d-flex justify-content-space-between mt-5 form_"
+          (ngSubmit)="onSubmit(subForm.value)"
+          *ngIf="message == ''"
+        >
+          <div class="form-group col-md-5 mr_">
+            <input
+              type="text"
+              class="form-control shadow-effect"
+              placeholder="Your name"
+              name="name"
+              ngModel
+              required
+              #Name="ngModel"
+              [ngClass]="{ 'is-invalid': Name.invalid && Name.touched }"
+            />
+            <div class="text-danger" *ngIf="Name.invalid && Name.touched">
+              <div class="text-danger">Name is Required</div>
+            </div>
+          </div>
 
-        <div class="form-group col-md-5 ">
-          <input type="email" class="form-control shadow-effect" placeholder="Email Address">
-        </div>
+          <div class="form-group col-md-5">
+            <input
+              type="email"
+              class="form-control shadow-effect"
+              placeholder="Email Address"
+              name="email"
+              #Email="ngModel"
+              ngModel
+              required
+              email
+              [ngClass]="{ 'is-invalid': Email.invalid && Email.touched }"
+            />
+            <div class="text-danger" *ngIf="Email.invalid && Email.touched">
+              <div class="text-danger" *ngIf="Email.errors?.['required']">
+                Email is Required
+              </div>
+              <div class="text-danger" *ngIf="Email.errors?.['email']">
+                Must be email
+              </div>
+            </div>
+          </div>
 
-        <div class="col-md-2">
-          <button class="btn btn-info btn-add btn-theme text-light" [disabled]="false">subscriber</button>
+          <div class="col-md-2">
+            <button
+              class="btn btn-info btn-add btn-theme text-light"
+              [disabled]="subForm.invalid"
+            >
+              subscriber
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <div class="col-md-5 message-sub alert alert-success" *ngIf="message != ''">
+          <b>{{ message }} !! Moa Moa Moa </b>
         </div>
-
-      </form>
+      </div>
     </div>
   </div>
 </div>
